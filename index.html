@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Gestor de Heroes | PouchDB</title>
+    <meta
+      name="description"
+      content="Aplicacion de practica con PouchDB para crear, editar, eliminar y listar heroes en almacenamiento local."
+    />
+    <meta name="theme-color" content="#334155" />
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="src/css/main.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
+    <script defer src="src/js/app.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero-header">
+        <h1>Gestor local de heroes</h1>
+        <p class="lead">
+          Practica operaciones con PouchDB en una interfaz simple. Para ver
+          respuestas detalladas y errores, revisa la consola del navegador.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Base de datos</h2>
+        <p class="card-help">
+          Inicializa la base local heroes en IndexedDB y reiniciala cuando sea
+          necesario.
+        </p>
+        <div class="actions-grid">
+          <button id="btn-create-db" type="button">Crear base heroes</button>
+          <button id="btn-reset-db" type="button" class="danger">
+            Reiniciar base
+          </button>
+          <button id="btn-list-all" type="button" class="secondary">
+            Listar registros
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Registro de heroes</h2>
+        <p class="card-help">
+          Puedes guardar con ID manual (clave primaria) o con ID autogenerado.
+        </p>
+        <div class="input-grid">
+          <label>
+            ID para clave primaria
+            <input id="primary-id" type="text" value="hero_superman" />
+          </label>
+          <label>
+            Nombre
+            <input id="hero-name" type="text" value="Superman" />
+          </label>
+          <label>
+            Poder
+            <input id="hero-power" type="text" value="Vuelo y fuerza" />
+          </label>
+          <label>
+            Equipo
+            <input id="hero-team" type="text" value="Justice League" />
+          </label>
+        </div>
+        <div class="actions-grid">
+          <button id="btn-create-primary" type="button">
+            Guardar con clave primaria
+          </button>
+          <button id="btn-add-auto-document" type="button">
+            Guardar auto-ID (documento)
+          </button>
+          <button id="btn-add-auto-json" type="button">
+            Guardar auto-ID (objeto JSON)
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Adjunto BLOB</h2>
+        <p class="card-help">
+          Selecciona una imagen de tu equipo y adjuntala al registro indicado.
+        </p>
+        <div class="input-grid one-column">
+          <label>
+            ID para adjunto
+            <input id="blob-doc-id" type="text" value="hero_blob_demo" />
+          </label>
+          <label>
+            Imagen a subir
+            <input id="blob-file" type="file" accept="image/*" />
+          </label>
+        </div>
+        <div class="actions-grid">
+          <button id="btn-attach-blob" type="button" class="secondary">
+            Agregar BLOB al registro
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Actualizar y eliminar</h2>
+        <p class="card-help">
+          Modifica o elimina registros usando objeto documento o JSON.
+        </p>
+        <div class="input-grid">
+          <label>
+            ID para editar
+            <input id="edit-id" type="text" value="hero_superman" />
+          </label>
+          <label>
+            Nuevo poder
+            <input id="edit-power" type="text" value="Vision calorifica" />
+          </label>
+          <label>
+            ID para eliminar
+            <input id="delete-id" type="text" value="hero_superman" />
+          </label>
+        </div>
+        <div class="actions-grid">
+          <button id="btn-edit-document" type="button">
+            Editar por documento
+          </button>
+          <button id="btn-edit-json" type="button">Editar por JSON</button>
+          <button id="btn-delete-document" type="button" class="danger">
+            Eliminar por documento
+          </button>
+          <button id="btn-delete-json" type="button" class="danger">
+            Eliminar por JSON
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Tabla de registros</h2>
+        <p class="card-help">
+          La tabla se actualiza cuando presionas "Listar registros".
+        </p>
+        <div id="table-output" class="table-output"></div>
+      </section>
+    </main>
+  </body>
+</html>
